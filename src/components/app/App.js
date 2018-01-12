@@ -3,9 +3,8 @@ import './app.css';
 import Template from '../Template';
 
 export default class App {
-    constructor() {
+    constructor() { 
         this.dom = new Template(html).clone();
-        console.log()
     }
 
     render() {
