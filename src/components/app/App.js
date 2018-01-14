@@ -4,14 +4,29 @@ import './app.css';
 import Template from '../Template';
 import Header from '../header/Header';
 
+import { getTopNews, searchNews } from '../../services/newsApi.js';
+
 
 export default class App {
     constructor() { 
         this.dom = new Template(html).clone();
     }
 
-    handleSearch(search) {
-        console.log(search);
+    async handleSearch(search) {
+        const res = await searchNews(search);
+        console.log(res)
+        if(res.status === 'ok') {
+            if(res.totalResults > 0)
+                this.fillArticles(res.articles);
+            else
+                console.log('no results found');    // TODO: render message in dom
+        }
+        else if(res.status === 'error')
+            console.log(res.message);   // TODO: render error message in dom
+    }
+
+    fillArticles(articles) {
+        console.log(articles)
     }
     
     render() {
