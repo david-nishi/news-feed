@@ -27,11 +27,13 @@ export default class App {
 
     fillArticles(articles) {
         console.log(articles)
+        this.main.innerHTML = `<h1>${articles[0].title}</h1>`
     }
     
     render() {
         const header = new Header(search => this.handleSearch(search));
         this.dom.querySelector('header').appendChild(header.render());
+        this.main = this.dom.querySelector('main');
         return this.dom;
     }
 }
