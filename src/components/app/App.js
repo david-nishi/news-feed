@@ -3,6 +3,7 @@ import './app.css';
 
 import Template from '../Template';
 import Header from '../header/Header';
+import ArticleList from '../articles/ArticleList';
 
 import { getTopNews, searchNews } from '../../services/newsApi.js';
 
@@ -26,14 +27,14 @@ export default class App {
     }
 
     fillArticles(articles) {
-        console.log(articles)
-        this.main.innerHTML = `<h1>${articles[0].title}</h1>`
+        this.articles.innerHTML = '';
+        this.articles.appendChild(new ArticleList(articles).render())
     }
     
     render() {
         const header = new Header(search => this.handleSearch(search));
         this.dom.querySelector('header').appendChild(header.render());
-        this.main = this.dom.querySelector('main');
+        this.articles = this.dom.getElementById('articles');
         return this.dom;
     }
 }
