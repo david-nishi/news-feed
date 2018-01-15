@@ -27,14 +27,15 @@ export default class App {
     }
 
     fillArticles(articles) {
-        this.articles.innerHTML = '';
-        this.articles.appendChild(new ArticleList(articles).render())
+        const articlesSection = this.main.querySelector('#articles');
+        if(articlesSection) this.main.removeChild(articlesSection);
+        this.main.appendChild(new ArticleList(articles).render())
     }
     
     render() {
         const header = new Header(search => this.handleSearch(search));
         this.dom.querySelector('header').appendChild(header.render());
-        this.articles = this.dom.getElementById('articles');
+        this.main = this.dom.getElementById('main');
         return this.dom;
     }
 }
