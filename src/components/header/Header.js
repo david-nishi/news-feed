@@ -11,18 +11,9 @@ export default class Header {
         this.onSearch = onSearch;
     }
 
-    handleSearch() {
-        this.onSearch(this.searchInput.value);
-    }
-
     render() {
-        const searchDom = new Search().render();
-        this.searchInput = searchDom.querySelector('input');
-
-        this.searchInput.addEventListener('keydown', e => e.key === 'Enter' && this.handleSearch())
-        searchDom.querySelector('button').addEventListener('click', () => this.handleSearch())
-
-        this.dom.getElementById('search').appendChild(searchDom);
+        this.dom.getElementById('search')
+            .appendChild(new Search(this.onSearch).render());
 
         return this.dom;
     }
