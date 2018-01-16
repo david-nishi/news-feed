@@ -1,6 +1,4 @@
 #search {
-    position: absolute;
-    bottom: 0;
     box-sizing: border-box;
     width: calc(100% - 1rem);
     margin: 0.5rem 0.5rem 0 0.5rem;
@@ -59,6 +57,7 @@
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    display: none;
 }
 
 #paging label, #page-select {

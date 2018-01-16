@@ -23,7 +23,7 @@ b, strong {
     font-weight: bold;
 }
 
-#root header {
-    position: relative;
-    height: 9.4rem;
+#clearfix {
+    content: " ";
+    height: 3rem;
 }

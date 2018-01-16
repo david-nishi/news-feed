@@ -54,6 +54,10 @@ export default class App {
     }
 
     updatePageSelectEl(totalResults) {
+
+        // show paging options;
+        if(this.pagingEl.getAttribute('style') !== 'display: flex') this.pagingEl.setAttribute('style', 'display: flex');
+
         const currentPages = parseInt(this.pageSelectEl.getAttribute('data-max'));
         let numPages = Math.ceil(totalResults / ARTICLES_PER_PAGE);
         if(numPages > 50) numPages = 50;
@@ -61,7 +65,6 @@ export default class App {
         if(currentPages < numPages) {
             // add pages as necessary
             for(let i = currentPages + 1; i <= numPages; i++) {
-                console.log(i)
                 let optEl = document.createElement('option');
                 optEl.setAttribute('value', i);
                 optEl.innerText = i;
@@ -72,7 +75,6 @@ export default class App {
         else {
             // remove pages as necessary
             while(parseInt(this.pageSelectEl.lastChild.value) > numPages) {
-                console.log(this.pageSelectEl.lastChild.value)
                 this.pageSelectEl.removeChild(this.pageSelectEl.lastChild);
             }
         }
@@ -86,7 +88,8 @@ export default class App {
         
         this.dom.querySelector('header').appendChild(header.render());
         this.main = this.dom.getElementById('main');
-        this.pageSelectEl = this.dom.getElementById('page-select')
+        this.pagingEl = this.dom.getElementById('paging');
+        this.pageSelectEl = this.dom.getElementById('page-select');
 
         return this.dom;
     }
