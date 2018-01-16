@@ -22,3 +22,8 @@ i, em {
 b, strong {
     font-weight: bold;
 }
+
+#root header {
+    position: relative;
+    height: 9.4rem;
+}

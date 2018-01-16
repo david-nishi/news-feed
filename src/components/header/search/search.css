@@ -1,7 +1,9 @@
 #search {
+    position: absolute;
+    bottom: 0;
     box-sizing: border-box;
     width: calc(100% - 1rem);
-    margin: 0.5rem;
+    margin: 0.5rem 0.5rem 0 0.5rem;
     border-radius: 0.5rem;
     padding: 0.5rem 0.5rem 0 0.5rem;
     background: #ddd;
