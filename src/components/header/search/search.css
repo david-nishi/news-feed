@@ -75,3 +75,11 @@
     background-color: black;
     color: white;
 }
+
+#prev-page {
+    border-top-right-radius: 0.5rem;
+}
+
+#next-page {
+    border-top-left-radius: 0.5rem;
+}
