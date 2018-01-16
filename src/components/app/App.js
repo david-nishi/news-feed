@@ -4,6 +4,8 @@ import './app.css';
 import Template from '../Template';
 import Header from '../header/Header';
 import ArticleList from '../articles/ArticleList';
+import Loading from '../loading/Loading';
+import ErrorDisplay from '../error/ErrorDisplay';
 
 import { getTopNews, searchNews } from '../../services/newsApi.js';
 import { ARTICLES_PER_PAGE } from '../../services/constants';
@@ -17,23 +19,33 @@ export default class App {
     async getInitContent() {
         const res = await getTopNews('general');
         if(res.status === 'ok') this.fillArticles(res.articles);
-        else console.log(res.message);
+        else if(res.status === 'error') 
+            this.main.appendChild(new ErrorDisplay(res.message).render());
     }
 
     async handleSearch(searchParams) {
-        const res = await searchNews(searchParams);
-        console.log(res)
-        if(res.status === 'ok') {
+        const errDisplayEl = this.main.querySelector('#error-display');
+        if(errDisplayEl) this.main.removeChild(errDisplayEl);
+
+        try {
+            this.main.appendChild(new Loading().render());
+            const res = await searchNews(searchParams);
+
             if(res.totalResults > 0){
                 this.updatePageSelectEl(res.totalResults);
                 this.fillArticles(res.articles);
             }
             else
-                console.log('no results found');    // TODO: render message in dom
+                this.main.appendChild(new ErrorDisplay('no results found').render());
+            }
+        catch(err) {
+            this.main.appendChild(new ErrorDisplay(err.message).render());   
         }
-        else if(res.status === 'error')
-            console.log(res.message);   // TODO: render error message in dom
+        finally {
+            this.main.removeChild(this.main.querySelector('#loading-screen'));
+        }
     }
+
 
     fillArticles(articles) {
         const articlesSection = this.main.querySelector('#articles');
@@ -47,6 +59,7 @@ export default class App {
         if(numPages > 50) numPages = 50;
 
         if(currentPages < numPages) {
+            // add pages as necessary
             for(let i = currentPages + 1; i <= numPages; i++) {
                 console.log(i)
                 let optEl = document.createElement('option');
@@ -57,6 +70,7 @@ export default class App {
             }
         }
         else {
+            // remove pages as necessary
             while(parseInt(this.pageSelectEl.lastChild.value) > numPages) {
                 console.log(this.pageSelectEl.lastChild.value)
                 this.pageSelectEl.removeChild(this.pageSelectEl.lastChild);
