@@ -3,18 +3,20 @@
     <button name="submit">search</button>
 </section>
 <section id="search-parameters">
-    <label>By:</label>
+    <label>sort by:</label>
     <select id="sort-by" value="popularity">
         <option value="popularity">popularity</option>
         <option value="publishedAt">most recent</option>
         <option value="relevancy">relevancy</option>
     </select>
-    <label>Today Only: </label>
+    <label>today only:</label>
     <input id="today-only" type="checkbox"/>
 </section>
 <section id="paging">
-    <label>Page</label>
-    <select id="page-select" data-max="0"></select>
     <button id="prev-page"><</button>
+    <section id="page">
+        <label>Page</label>
+        <select id="page-select" data-max="0"></select>
+    </section>
     <button id="next-page">></button>
 </section>
