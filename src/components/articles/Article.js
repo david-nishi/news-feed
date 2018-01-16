@@ -25,6 +25,11 @@ export default class Article {
         if(this.data.urlToImage) 
             imgEl.setAttribute('src', this.data.urlToImage);
 
+        // format date
+        const date = this.data.publishedAt.split('T');
+        this.data.publishedAt = `${date[0]} \u2014 ${date[1].slice(0, 5)}`;
+        console.log(this.data.publishedAt.split('T'))
+        
         // set data for all fields except source, url, and urlToImg
         Object.keys(this.data).forEach(key => {
             if(!/source|url|urlToImage/.test(key))
