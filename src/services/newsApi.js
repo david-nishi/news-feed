@@ -3,22 +3,22 @@ const pathTopHeadlines = 'https://newsapi.org/v2/top-headlines';
 const pathEverything = 'https://newsapi.org/v2/everything';
 
 
-// export async function getTopNews(category = 'general') {
-//     const url = `${pathTopHeadlines}?apikey=${apiKey}` +
-//         'country=us&' +
-//         `category=&{category}` + 
-//         `apikey=${apiKey}`;
+export async function getTopNews(category = 'general') {
+    const url = `${pathTopHeadlines}?` +
+        'country=us&' +
+        `category=${category}&` + 
+        `apikey=${apiKey}`;
     
-//     const response = await fetch(url);
-//     return response.json();
-// }
+    const response = await fetch(url);
+    return response.json();
+}
 
 export async function searchNews(searchTerm, page = 1, todayOnly = false, byPopularity = false) {
     const today = new Date();
     const url = `${pathEverything}?` +
         `q=${searchTerm}&` +
         'language=en&' +
-        'pageSize=10&' +
+        'pageSize=20&' +
         `page=${page}&` +
         (byPopularity ? 
             'sortBy=popularity&' : 

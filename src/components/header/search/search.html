@@ -1,2 +1,20 @@
-<input type="text" placeholder="search for..." name="input"/>
-<button name="submit">search</button>
+<section id="search-bar">
+    <input type="text" placeholder="search for..." name="input"/>
+    <button name="submit">search</button>
+</section>
+<section id="search-parameters">
+    <label>By:</label>
+    <select value="popularity">
+        <option value="popularity">popularity</option>
+        <option value="publishedAt">most recent</option>
+        <option value="relevancy">relevancy</option>
+    </select>
+    <label>Today Only: </label>
+    <input type="checkbox"/>
+</section>
+<section id="paging">
+    <label>Page</label>
+    <select id="page-select"></select>
+    <button id="prev-page"><</button>
+    <button id="next-page">></button>
+</section>

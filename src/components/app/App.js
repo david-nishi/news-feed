@@ -13,6 +13,12 @@ export default class App {
         this.dom = new Template(html).clone();
     }
 
+    async getInitContent() {
+        const res = await getTopNews('general');
+        if(res.status === 'ok') this.fillArticles(res.articles);
+        else console.log(res.message);
+    }
+
     async handleSearch(search) {
         const res = await searchNews(search);
         console.log(res)
@@ -33,6 +39,7 @@ export default class App {
     }
     
     render() {
+        // this.getInitContent();
         const header = new Header(search => this.handleSearch(search));
         this.dom.querySelector('header').appendChild(header.render());
         this.main = this.dom.getElementById('main');

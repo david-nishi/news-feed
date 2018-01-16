@@ -22,7 +22,7 @@ export default class Header {
         this.searchInput.addEventListener('keydown', e => e.key === 'Enter' && this.handleSearch())
         searchDom.querySelector('button').addEventListener('click', () => this.handleSearch())
 
-        this.dom.getElementById('search-bar').appendChild(searchDom);
+        this.dom.getElementById('search').appendChild(searchDom);
 
         return this.dom;
     }
