@@ -79,7 +79,7 @@ export default class App {
     }
     
     render() {
-        // this.getInitContent();
+        this.getInitContent();
         const header = new Header(
             searchParams => this.handleSearch(searchParams)
         );

@@ -14,3 +14,11 @@ a:link, a:visited, a:hover, a:active {
     text-decoration: none;
     color: black;
 }
+
+i, em {
+    font-style: italic
+}
+
+b, strong {
+    font-weight: bold;
+}
