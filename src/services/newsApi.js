@@ -1,9 +1,9 @@
 import { ARTICLES_PER_PAGE } from './constants';
+import 'dotenv/config';
 
-
-const apiKey = '828a05f2cb2243c7bd38e36e7aceb9e5';
-const pathTopHeadlines = 'https://newsapi.org/v2/top-headlines';
-const pathEverything = 'https://newsapi.org/v2/everything';
+const apiKey = process.env.API_KEY;
+const pathTopHeadlines = process.env.TOP_HEADLINES_URL;
+const pathEverything = process.env.API_URL;
 
 
 export async function getTopNews(category = 'general') {
