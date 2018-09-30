@@ -22,8 +22,10 @@ export default class Article {
         // set img data
         const imgEl = this.dom.querySelector('img');
         imgEl.setAttribute('alt', this.data.title);
-        if(this.data.urlToImage) 
+        if(this.data.urlToImage) {
             imgEl.setAttribute('src', this.data.urlToImage);
+            imgEl.classList.remove('non-img');
+        }
 
         // format date
         const date = this.data.publishedAt.split('T');
