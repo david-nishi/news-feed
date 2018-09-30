@@ -1,4 +1,4 @@
-#articles article {
+.article-container {
     box-sizing: border-box;
     width: calc(100% - 2rem);
     margin: 1rem;
@@ -39,8 +39,11 @@
 
 @media only screen and (min-width: 700px) {
     .article-container {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 976px;
         display: grid;
-        grid-template-columns: min-content 1fr auto;
+        grid-template-columns: auto 1fr auto;
         grid-template-areas:
             "title    title       title    "
             "img      description description  "
@@ -53,6 +56,7 @@
     .article-img {
         grid-area: img;
         margin: 0;
+        width: auto;
         max-height: 100px;
     }
     
@@ -60,6 +64,7 @@
         grid-area: description;
         margin: 0;
         padding: 1rem;
+        max-width: 750px;
     }
     
     .author {
