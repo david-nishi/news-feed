@@ -13,8 +13,8 @@ export default class ArticleList {
 
     buildArticleSection() {
         const articleSection = this.dom.getElementById('articles');
-        this.data.forEach(data => {
-            articleSection.appendChild(new Article(data).render());
+        this.data.forEach((data, i) => {
+            articleSection.appendChild(new Article(data, i).render());
         })
         return articleSection;
     }

@@ -6,6 +6,10 @@
     padding: 0.5rem 0.5rem 0 0.5rem;
     background: #ddd;
     overflow: hidden;
+    animation-name: fadein-up;
+    animation-duration: 500ms;
+    animation-delay: 200ms;
+    animation-fill-mode: backwards;
 }
 
 #search-bar-input {
@@ -81,4 +85,17 @@
 
 #next-page {
     border-top-left-radius: 0.5rem;
+}
+
+
+@keyframes fadein-up {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

@@ -4,9 +4,10 @@ import './article.css';
 import Template from '../Template';
 
 export default class Article {
-    constructor(data) {
+    constructor(data, i) {
         this.dom = new Template(html).clone();
         this.data = data;
+        this.index = i;
     }
 
     buildLink() {
@@ -18,6 +19,8 @@ export default class Article {
     }
 
     buildArticle() {
+        const articleEl = this.dom.querySelector('.article-container');
+        articleEl.style.animationDelay = (200 + this.index * 100) + 'ms';
 
         // set img data
         const imgEl = this.dom.querySelector('img');
