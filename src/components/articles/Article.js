@@ -28,11 +28,11 @@ export default class Article {
         // format date
         const date = this.data.publishedAt.split('T');
         this.data.publishedAt = `${date[0]} \u2014 ${date[1].slice(0, 5)}`;
-        
+
         // set data for all fields except source, url, and urlToImg
-        Object.keys(this.data).forEach(key => {
-            if(!/source|url|urlToImage/.test(key))
-                this.dom.getElementById(key).innerText = this.data[key];
+        Object.keys(this.data).forEach(key => {            
+            if(/author|title|description|publishedAt/.test(key))
+                this.dom.querySelector('.' + key).innerText = this.data[key];
         })
 
         return this.dom;
